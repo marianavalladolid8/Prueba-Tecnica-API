@@ -62,3 +62,25 @@ Este proyecto implementa una API REST para gestionar participantes y clases, con
 
 4. La API estará disponible en `http://localhost:8080`
 5. No se agrega spripts de sql ya que contiene datos personales.
+6. Se pueden utilizar los siguientes scripts:
+7. -- Conectarse a la base de datos
+   USE participantes_db;
+
+-- Insertar una clase
+INSERT INTO clases (descripcion, poo)
+VALUES ('Programación Avanzada en Java', true);
+
+-- Verificar que la clase se creó correctamente y obtener su ID
+SELECT * FROM clases;
+
+-- Insertar un participante asociado a la clase (asumiendo que el ID de la clase es 1)
+INSERT INTO participantes (nombre, email, observaciones, clase_id)
+VALUES ('Juan Pérez', 'juan.perez@example.com', 'Estudiante destacado con experiencia en desarrollo web', 1);
+-- *Se uso a Jun Perez con anterioridad y se borro el id 1*
+-- Verificar que el participante se creó correctamente
+SELECT * FROM participantes;
+
+-- Consulta para ver el participante con su clase
+SELECT p.id, p.nombre, p.email, p.observaciones, c.descripcion as clase_descripcion, c.poo
+FROM participantes p
+JOIN clases c ON p.clase_id = c.id;
